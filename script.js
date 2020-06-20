@@ -1,25 +1,28 @@
 $(document).ready(function () {
-  var formControl = $(".form-control");
-  var time = moment().format("H");
-  var container = $(".container");
+  var time = moment().hours();
 
-  var showTodo;
+  var showTodo = $(".todo");
+  showTodo.value = localStorage.getItem("text");
+
   var button = $(".save-button");
   // var currentDate = $("#currentDay");
   //gives current date in my
   $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
+  var index = 0;
 
   function tellTime() {
-    for (var i = 0; i <= 23; i++) {
-      if (time === i) {
-        $(".form-control").addClass("present");
+    for (i = 9; i <= 16; i++) {
+      if (time == i) {
+        index.addClass("present");
       } else if (time < i) {
-        $(".form-control").addClass("past");
+        index.addClass("past");
       } else {
-        $(".form-control").addClass("future");
+        index.addClass("future");
       }
+      index++;
     }
     console.log(time);
+    console.log(index);
   }
 
   tellTime();
