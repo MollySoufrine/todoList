@@ -1,14 +1,22 @@
 $(document).ready(function () {
-  var todoList = $(".form-control");
-  //class name of each table row this way I can access all of them
+  var date;
+  var time;
+  var storedTodo;
+  var button = $("#save-button");
 
-  todoList.each(function () {
-    if (this.moment === "past") {
-      this.style.color = ".past";
-    } else if (this.moment === "future") {
-      this.style.color = ".future";
-    } else {
-      this.style.color = ".present";
-    }
+  //gives current date in my
+  $("#currentDay").text(moment().format("MMMM Do YYYY, h:mm:ss a"));
+
+  $(window).on("load", function () {
+    date = moment().format("YYYY-MM-DD, h:mm:ss a");
+    time = moment().format("H");
   });
+
+  function savedTodo() {}
+  button.value = localStorage.getItem("");
+  button.click("input", function () {
+    localStorage.setItem("", button.value);
+  });
+  tellTime();
+  // console.log(dateString);
 });
