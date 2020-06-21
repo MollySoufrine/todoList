@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  var time = moment().hours();
+  var hour = moment().hours();
 
   var showTodo = $(".todo");
   showTodo.value = localStorage.getItem("text");
@@ -12,18 +12,32 @@ $(document).ready(function () {
 
   function tellTime() {
     for (i = 9; i <= 16; i++) {
-      if (time == i) {
-        index.addClass("present");
-      } else if (time < i) {
-        index.addClass("past");
+      if (hour == i) {
+        $($(".form-control")[index]).addClass("present");
+      } else if (hour < i) {
+        $($(".form-control")[index]).addClass("past");
       } else {
-        index.addClass("future");
+        $($(".form-control")[index]).addClass("future");
       }
       index++;
     }
-    console.log(time);
+    console.log(hour);
     console.log(index);
   }
+
+  $(".saveBtn").on("click", function () {
+    // get nearby values
+    var value = $(this).siblings(".save").val();
+    var time = $(this).parent().attr("id");
+
+    // save in localStorage
+    localStorage.setItem(time, value);
+  });
+  console.log(localStorage.getItem([0]));
+  // get current number of hours
+  var currentHour = moment().hours();
+
+  $(".save").val(localStorage.getItem("hour"));
 
   tellTime();
 });
