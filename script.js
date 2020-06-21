@@ -2,7 +2,6 @@ $(document).ready(function () {
   var hour = moment().hours();
 
   var showTodo = $(".todo");
-  showTodo.value = localStorage.getItem("text");
 
   var button = $(".save-button");
   // var currentDate = $("#currentDay");
@@ -14,7 +13,7 @@ $(document).ready(function () {
     for (i = 9; i <= 16; i++) {
       if (hour == i) {
         $($(".description")[index]).addClass("present");
-      } else if (hour < i) {
+      } else if (hour > i) {
         $($(".description")[index]).addClass("past");
       } else {
         $($(".description")[index]).addClass("future");
@@ -36,7 +35,7 @@ $(document).ready(function () {
   // get current number of hours
   var currentHour = moment().hours();
 
-  $("#hour .description").val(localStorage.getItem("hour"));
+  $("#hour-9 .description").val(localStorage.getItem("hour"));
   // $("#hour-10 .description").val(localStorage.getItem("hour"));
   // $("#hour-11 .description").val(localStorage.getItem("hour"));
   // $("#hour-12 .description").val(localStorage.getItem("hour"));
