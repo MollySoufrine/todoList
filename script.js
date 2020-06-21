@@ -13,11 +13,11 @@ $(document).ready(function () {
   function tellTime() {
     for (i = 9; i <= 16; i++) {
       if (hour == i) {
-        $($(".form-control")[index]).addClass("present");
+        $($(".description")[index]).addClass("present");
       } else if (hour < i) {
-        $($(".form-control")[index]).addClass("past");
+        $($(".description")[index]).addClass("past");
       } else {
-        $($(".form-control")[index]).addClass("future");
+        $($(".description")[index]).addClass("future");
       }
       index++;
     }
@@ -27,17 +27,23 @@ $(document).ready(function () {
 
   $(".saveBtn").on("click", function () {
     // get nearby values
-    var value = $(this).siblings(".save").val();
+    var value = $(this).siblings(".description").val();
     var time = $(this).parent().attr("id");
 
     // save in localStorage
     localStorage.setItem(time, value);
   });
-  console.log(localStorage.getItem([0]));
   // get current number of hours
   var currentHour = moment().hours();
 
-  $(".save").val(localStorage.getItem("hour"));
+  $("#hour .description").val(localStorage.getItem("hour"));
+  // $("#hour-10 .description").val(localStorage.getItem("hour"));
+  // $("#hour-11 .description").val(localStorage.getItem("hour"));
+  // $("#hour-12 .description").val(localStorage.getItem("hour"));
+  // $("#hour-1 .description").val(localStorage.getItem("hour"));
+  // $("#hour-2 .description").val(localStorage.getItem("hour"));
+  // $("#hour-3 .description").val(localStorage.getItem("hour"));
+  // $("#hour-4 .description").val(localStorage.getItem("hour"));
 
   tellTime();
 });
